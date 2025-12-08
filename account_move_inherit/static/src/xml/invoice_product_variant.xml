@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<templates xml:space="preserve">
+
+    <t t-name="account_move_inherit.InvoiceProductField" >
+        <div class="d-flex align-items-center gap-2 w-auto mt-0">
+            <div>
+                <button type="button" class="btn btn-secondary fa fa-pencil px-2"
+                        t-att-disabled="this.props.record._parentRecord.data.state !== 'draft'"
+                        t-on-click="onEditConfiguration"/>
+            </div>
+            <div>
+                <!-- Selected Variants -->
+                <t t-if="state.selected_variant_names.length">
+                    <div class="mt-2">
+                        <small>
+                            <em>
+                                <div class="container-fluid p-0">
+                                    <t t-foreach="state.selected_variant_names" t-as="v" t-key="v" t-foreach-index="i">
+                                        <div class="">
+                                            <t t-esc="v"/>
+                                            <br/>
+                                        </div>
+                                    </t>
+                                </div>
+                            </em>
+                        </small>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+
+</templates>

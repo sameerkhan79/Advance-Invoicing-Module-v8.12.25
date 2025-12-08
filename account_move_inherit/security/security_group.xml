@@ -1,0 +1,8 @@
+<odoo>
+    <!-- Trademark Manager Group -->
+    <record id="group_trademark_manager" model="res.groups">
+        <field name="name">Trademark Manager</field>
+        <field name="category_id" ref="base.module_category_hidden"/> 
+        <!-- or use another category like base.module_category_sales -->
+    </record>
+</odoo>

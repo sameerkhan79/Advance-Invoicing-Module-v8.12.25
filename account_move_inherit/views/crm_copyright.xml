@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_crm_partner_form_inherit_copyright" model="ir.ui.view">
+        <field name="name">crm.partner.form.inherit.copyright</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                <page string="Copyright Details" name="copyright_detail_page">
+                    <group name="copyright_group">
+                        <field name="copyright_ids" widget="one2many" >
+                            <list editable="bottom" string="Copy-right" create="1" delete="1">
+                                <field name="sequence" widget="handle"/>
+                                <field name="partner_id" string="Customer" readonly="1"/>
+                                <field name="copyright" string="Copy-right"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

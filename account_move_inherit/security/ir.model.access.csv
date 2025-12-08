@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_res_partner_trademark,access_res_partner_trademark,model_res_partner_trademark,,1,1,1,1
+access_trademark_history_user,trademark.history.user,model_trademark_history,base.group_user,1,1,1,0
+access_trademark_history_manager,trademark.history.manager,model_trademark_history,account_move_inherit.group_trademark_manager,1,1,1,1
+access_res_partner_label,res.partner.label,model_res_partner_label,,1,1,1,1
+access_res_partner_copyright,res.partner.copyright,model_res_partner_copyright,,1,1,1,1

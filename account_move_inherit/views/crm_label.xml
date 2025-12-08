@@ -1,0 +1,24 @@
+<odoo>
+    <record id="view_crm_partner_form_inherit_label" model="ir.ui.view">
+        <field name="name">crm.partner.form.inherit.label</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                <page string="Label Details" name="labels_detail_page">
+                    <group name="label_group">
+                        <field name="label_ids" widget="one2many" >
+                            <list editable="bottom" string="Labels" create="1" delete="1">
+                                <field name="sequence" widget="handle"/>
+                                <field name="partner_id" string="Customer" readonly="1"/>
+                                <field name="label" string="Label Name"/>
+                            </list>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

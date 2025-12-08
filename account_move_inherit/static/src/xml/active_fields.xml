@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="account_move_inherit.ActiveFields">
+        <div class="d-flex flex-row align-items-center gap-4">
+
+            <!-- Trademark field -->
+            <Many2XAutocomplete
+                resModel="'res.partner.trademark'"
+                value="(props.record.data[props.name] &amp;&amp; props.record.data[props.name][1]) || '' "
+                getDomain="this.getDomain"
+                update.bind="this.onUpdateTrademark"
+                fieldString="'Trademark'"
+                activeActions="{}"
+            />
+
+            <!-- Checkbox -->
+            <div class="d-flex align-items-center">
+                <CheckBox
+                    value="props.record.data.extra_flags?.trademark_id || false"
+                    t-on-change="this.onToggle"
+                />
+            </div>
+
+        </div>
+    </t>
+
+</templates>

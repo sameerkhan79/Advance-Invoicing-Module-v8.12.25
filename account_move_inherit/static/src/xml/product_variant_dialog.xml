@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="account_move_inherit.ProductVariantDialog">
+        <Dialog title="'Select Service Classes'" size="'lg'">
+            <div class="d-flex flex-wrap gap-3 align-items-start">
+                
+                <!-- Image -->
+                <div class="text-center" style="flex: 0 0 120px;">
+                    <img class="o_sale_product_configurator_img mb-2 img-fluid"
+                         t-att-src="this.imageUrl"
+                         alt="Variant Image"/>
+                </div>
+
+                <!-- Product Info -->
+                <div style="flex: 1 1 auto; min-width: 150px;">
+                    <div class="fw-bold d-flex align-items-center gap-1">
+                        <t t-if="this.attribute_name">
+                            <t t-esc="this.attribute_name"/>
+                        </t>
+                        <t t-else="">
+                            <t t-esc="this.product_name"/>
+                            <span class="text-muted">Classes</span>
+                        </t>
+                    </div>
+                </div>
+
+                <!-- Variants -->
+                <div style="flex: 2 1 400px;">
+                    <div class="o_variant_list d-flex flex-wrap gap-2">
+                        <t t-foreach="state.variantList" t-as="variant" t-key="variant.id">
+                            <div class="o_variant_item d-flex align-items-center bg-light rounded p-1">
+                                <input type="checkbox"
+                                    class="form-check-input me-2"
+                                    t-att-checked="state.selectedIds.includes(variant.id) ? 'checked' : null"
+                                    t-on-change="() => selectVariant(variant.id)"/>
+                                <div class="fw-bold me-2">
+                                    <t t-esc="variant.name"/>
+                                </div>
+                                <div class="text-muted small border border-dark rounded-pill px-2">
+                                    Price: <t t-esc="variant.price"/>
+                                </div>
+
+                                <!-- Application Number input (only visible when selected) -->
+                                <!-- <t t-if="state.selectedIds.includes(variant.id)">
+                                    <input type="number" 
+                                        class="form-control ms-2" 
+                                        style="width:100px !important;"
+                                        t-att-value="variant.applicationNumber"
+                                        t-on-change="(ev) => updateApplicationNumber(variant.id, ev.target.value)"/>
+                                </t> -->
+                            </div>
+                        </t>
+                    </div>
+                </div>
+
+                <!-- Total Price -->
+                <div class="d-flex flex-column justify-content-center text-center border-start ps-3" style="flex: 1 1 150px;">
+                    <span class="fw-bold">Total Price</span>
+                    <span class="fs-5"><t t-esc="state.totalPrice.toFixed(2)"/></span>
+                </div>
+
+            </div>
+            <t t-set-slot="footer">
+                <div class="d-flex justify-content-between align-items-center w-100">
+                    <!-- Left side: buttons -->
+                    <div>
+                        <button class="btn btn-primary me-2" t-on-click="confirm">
+                            Confirm
+                        </button>
+                        <button class="btn btn-secondary" t-on-click="close">
+                            Cancel
+                        </button>
+                    </div>
+                    
+                    <!-- Right side: total -->
+                    <div>
+                        <span class="h5 text-nowrap" t-out="state.totalPrice.toFixed(2)"/>
+                    </div>
+                </div>
+            </t>
+        </Dialog>
+    </t>
+</templates>

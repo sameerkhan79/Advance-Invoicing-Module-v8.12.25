@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="account_move_inherit.ApplicationNumberField">
+        <t t-foreach="state.variant_names" t-as="variant_name" t-key="variant_name">
+            <div class="d-flex align-items-center gap-2">
+                <div>
+                    <em>
+                        <t t-out="variant_name"/>
+                    </em>
+                </div>
+                <div>
+                    <input type="text"
+                           class="form-control"
+                           style="width:100px !important;"
+                           t-att-value="state.values[variant_name] || ''"
+                           t-att-readonly="this.props.record._parentRecord.data.state !== 'draft'"
+                           t-on-change="(ev) => this.onValueChange(variant_name, ev.target.value)"/>
+                </div>
+            </div>
+        </t>
+    </t>
+
+</templates>

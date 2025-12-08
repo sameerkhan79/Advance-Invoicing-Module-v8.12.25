@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="account_move_inherit.NoVariantDialog">
+        <Dialog title="'Oopss!!! 😢'" size="'md'">
+            <div class="text-center p-4">
+                <!-- Sad face illustration -->
+                <div class="rounded-circle bg-light shadow-sm d-inline-flex justify-content-center align-items-center mb-3"
+                     style="width:120px; height:120px; font-size:3rem; color:#6c757d;">
+                    😔
+                </div>
+
+                <!-- Message -->
+                <p class="fs-5 fw-semibold text-secondary">
+                    No service are defined for this product.
+                </p>
+                <p class="text-muted mb-0">
+                    Please check the product configuration or create service before proceeding.
+                </p>
+            </div>
+
+            <t t-set-slot="footer">
+                <div class="d-flex justify-content-center w-100 gap-3 py-2">
+                    <button class="btn btn-secondary rounded-pill px-4" t-on-click="close">
+                        Close
+                    </button>
+                </div>
+            </t>
+        </Dialog>
+    </t>
+</templates>

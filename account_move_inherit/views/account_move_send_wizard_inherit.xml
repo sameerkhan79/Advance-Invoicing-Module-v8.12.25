@@ -1,0 +1,37 @@
+<odoo>
+    <record id="view_account_move_send_wizard_inherit_cc" model="ir.ui.view">
+        <field name="name">account.move.send.wizard.inherit.cc</field>
+        <field name="model">account.move.send.wizard</field>
+        <field name="inherit_id" ref="account.account_move_send_wizard_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Inject CC after To field -->
+            <field name="mail_partner_ids" position="replace">
+                <field name="mail_partner_ids" 
+                    placeholder="Add contacts to notify..."
+                    options="{'no_quick_create': True}"
+                    required="'email' in sending_methods"/>
+            </field>
+            <field name="mail_subject" position="before">
+                <field name="mail_partner_cc_ids" 
+                    placeholder="CC (from template)"
+                    widget="many2many_tags_email"
+                    options="{'no_quick_create': True}"
+                    context="{'show_email': True, 'form_view_ref': 'base.view_partner_simple_form'}"/>
+            </field>
+
+        </field>
+    </record>
+    
+    <!-- Insert CC right after the To field -->
+    <!-- <record id="view_mail_template_inherit_cc" model="ir.ui.view">
+        <field name="name">mail.template.form.inherit.cc</field>
+        <field name="model">mail.template</field>
+        <field name="inherit_id" ref="mail.email_template_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='email_to']" position="after">
+                <field name="email_cc"/>
+            </xpath>
+        </field>
+    </record> -->
+</odoo>

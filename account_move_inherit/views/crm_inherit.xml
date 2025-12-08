@@ -1,0 +1,32 @@
+<odoo>
+    <record id="view_crm_partner_form_inherit_trademark" model="ir.ui.view">
+        <field name="name">crm.partner.form.inherit.trademark</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//form[1]/sheet[1]/notebook[1]" position="inside">
+                <page string="Trademark Details" name="trademark_details_page">
+                    <group name="trademark_group">
+                        <field name="associated_trademark_ids" context="{'default_partner_id': name}">
+                            <form>
+                                <sheet string="Trademark">
+                                    <group>
+                                        <group>
+                                            <field name="partner_id" readonly="1"/>
+                                            <field name="trademark_name"/>
+                                            <field name="trademark_number"/>
+                                            <field name="trademark_price" invisible="1"/>
+                                        </group>
+                                    </group>
+                                    <field name="name" invisible="1"/>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
