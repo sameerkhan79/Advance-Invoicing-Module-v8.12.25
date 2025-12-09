@@ -156,7 +156,7 @@
         </div>
         <xpath expr="//div[@id='payment_term']" position="after">
             <t t-if="o.invoice_line_ids.filtered(lambda x: x.product_id.product_tmpl_id.categ_id.name in ['Trademark Services','Design Services','Copyright Services'])">
-                <span class="fw-bold">NOTE:  Please don’t deduct Tax from the official fees.</span>
+                <span class="fw-bold">NOTE:  Please don’t deduct Tax from the official fees. <t t-esc=" ( o.total_offical_fees * 15 ) / 100 "/> Rs.</span>
             </t>
             <div class="mt-0 clearfix overflow-auto" style="border: 1px solid #dee2e6; border-radius: 6px; padding:8px; width: 100% !important;">
                 <table class="o_has_total_table table o_main_table table-borderless">
